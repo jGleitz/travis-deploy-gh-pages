@@ -1,8 +1,8 @@
-# deploy-gh-pages
+# Deploy to gh-pages from Travis
 Bash script to deploy to `gh-pages` from Travis.
 
 ## Features
-- **Easy to set up**. Just add one lines to your `.travi.yml` and set up your GitHub Token.
+- **Easy to set up**. Just add one line to your `.travis.yml` and set up your GitHub Token.
 - **Language agnostic**. Because it just works on files, this script can be used for any project.
 - **Branch folders**. `master`’s artifacts are put on the top level. Other branches are put into a `branches` directory. This means:
    - Deployment for all branches. If you are developing a feature in a branch, you can already have its artifacts published (and e.g. link to them from a PR)
@@ -16,7 +16,7 @@ Bash script to deploy to `gh-pages` from Travis.
 1. Go to [your GitHub Token settings page](https://github.com/settings/tokens) and hit “Generate new Token”. Enable the scope `public_repo`. Copy the token.
 2. Go to your Travis settings and create a new Environment variable called `GH_TOKEN`. Paste the token generated in 1. as the value. Leave “Display value in build log” switched off!
 
-#### Add the script to your .travis.yml:
+#### Add the script to your `.travis.yml`:
 
 ```yaml
 after_success:
