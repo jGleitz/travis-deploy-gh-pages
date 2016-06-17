@@ -24,3 +24,12 @@ after_success:
 ```
 
 Replace the paths with the paths to your artifacts.
+
+## Details
+Adding the above to your `.travis.yml` will download and execute this project’s script. The script will:
+ - either checkout your existing `gh-pages` branch or create a new one.
+ - create a default `README.md`, linking to your GitHub Pages. You can overwrite this file by passing your own `README.md` to the script.
+ - remove files checked out.
+ - remove all folders in the `branches` directory corresponding to deleted branches.
+ - copy in your files by passing its arguments to `rm -r`. If the build is on the `master` branch, the files will be put on the top level. Otherwise, they will be put into the `branches/$branchName` folder.
+ - commit and push back to GitHub.
