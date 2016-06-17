@@ -98,12 +98,12 @@ cp -r $ARTIFACTS "$PUBLISH/$pubdir"
 cd $PUBLISH
 
 git add --all .
-git commit -m "Travis build of $TRAVIS_BRANCH ($TRAVIS_COMMIT_RANGE)"
 
-# Push from the current repo's gh-pages branch to the remote
-# repo's gh-pages branch. We redirect any output to
-# /dev/null to hide any sensitive credential data that might otherwise be exposed.
-git push --quiet $REPO gh-pages:gh-pages > /dev/null 2>&1
+if ! git diff-index --quiet HEAD; then
+	git commit -m "Travis build of $TRAVIS_BRANCH ($TRAVIS_COMMIT_RANGE)"
 
-cd $BASE
-
+	# Push from the current repo's gh-pages branch to the remote
+	# repo's gh-pages branch. We redirect any output to
+	# /dev/null to hide any sensitive credential data that might otherwise be exposed.
+	git push --quiet $REPO gh-pages:gh-pages > /dev/null 2>&1
+fi
