@@ -44,10 +44,11 @@ function set_git_user {
 	git config user.email "travis@example.org"
 }
 
-echo "# Artifacts of $REPO_NAME\n\
+echo "# Artifacts of $REPO_NAME
 Built artifacts of $REPO_NAME$([ $TRAVIS_BRANCH != "master" ] && echo " (from branch $TRAVIS_BRANCH)"), \
-published on [GitHub pages](https://$REPO_OWNER.github.io/$REPO_NAME$([ $TRAVIS_BRANCH == "master" ] || echo "/branches/$TRAVIS_BRANCH")." > README.md
+published on [GitHub pages](https://$REPO_OWNER.github.io/$REPO_NAME$([ $TRAVIS_BRANCH == "master" ] || echo "/branches/$TRAVIS_BRANCH"))." > README.md
 
+# Check if gh-pages already exists
 if [ `git ls-remote --heads $REPO branch gh-pages | wc -l` == 1 ]
 then
 	git clone $REPO .
