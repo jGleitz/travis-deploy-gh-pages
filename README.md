@@ -1,4 +1,4 @@
-# Deploy to gh-pages from Travis
+# Deploy to gh-pages from Travis [![Build Status](https://travis-ci.org/jGleitz/travis-deploy-gh-pages.svg?branch=master)](https://travis-ci.org/jGleitz/travis-deploy-gh-pages)
 Bash script to deploy to `gh-pages` from Travis.
 
 ## Features
