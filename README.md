@@ -7,7 +7,6 @@ Bash script to deploy to `gh-pages` from Travis.
 - **Branch folders**. `master`’s artifacts are put on the top level. Other branches are put into a `branches` directory. This means:
    - Deployment for all branches. If you are developing a feature in a branch, you can already have its artifacts published (and e.g. link to them from a PR)
    - Branches don’t override `master`’s artifacts. The main artifacts you link to are always from `master`
-
 - **Secure**. The script will never print your credentials. 
   
 ## Usage
