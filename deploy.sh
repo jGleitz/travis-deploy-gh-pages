@@ -30,10 +30,11 @@ if [ -z ${ARTIFACTS:+1} ]; then
 	exit 1
 fi
 
-PUBLISH="`readlink -m ../publish`"
+PUBLISH="$(mktemp -d)"
 BASE=$PWD
 REPO_NAME=$(echo "$TRAVIS_REPO_SLUG" | cut -f2 -d/)
 REPO_OWNER=$(echo "$TRAVIS_REPO_SLUG" | cut -f1 -d/)
+STATUS=0
 mkdir -p $PUBLISH
 cd $PUBLISH
 
@@ -107,10 +108,14 @@ if ! git diff-index --quiet HEAD; then
 	# /dev/null to hide any sensitive credential data that might otherwise be exposed.
 	if ! git push --quiet $REPO gh-pages:gh-pages > /dev/null 2>&1; then
 		echo "push failed"
-		exit 1
+		STATUS=1
 	else
 		echo "push successful"
 	fi
 else
 	echo "No changes to commit"
 fi
+
+cd $BASE
+rm -rf $PUBLISH
+exit $STATUS
