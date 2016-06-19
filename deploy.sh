@@ -105,5 +105,12 @@ if ! git diff-index --quiet HEAD; then
 	# Push from the current repo's gh-pages branch to the remote
 	# repo's gh-pages branch. We redirect any output to
 	# /dev/null to hide any sensitive credential data that might otherwise be exposed.
-	git push --quiet $REPO gh-pages:gh-pages > /dev/null 2>&1
+	if ! git push --quiet $REPO gh-pages:gh-pages > /dev/null 2>&1; then
+		echo "push failed"
+		exit 1
+	else
+		echo "push successful"
+	fi
+else
+	echo "No changes to commit"
 fi
