@@ -95,7 +95,7 @@ touch .nojekyll
 
 # Copy in the artifacts
 cd $BASE
-cp -r $ARTIFACTS "$PUBLISH/$pubdir"
+cp -r "$ARTIFACTS" "$PUBLISH/$pubdir"
 cd $PUBLISH
 
 git add --all .
