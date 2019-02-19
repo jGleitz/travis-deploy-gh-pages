@@ -24,8 +24,7 @@ if [ -z ${GH_TOKEN:+1} ]; then
 	exit 0
 fi
 
-ARTIFACTS="$*"
-if [ -z ${ARTIFACTS:+1} ]; then
+if [[ -z ${*:+1} ]]; then
 	echo "No path to artifacts to deploy were provided"
 	exit 1
 fi
@@ -67,7 +66,7 @@ then
 else
 	git init
 	set_git_user
-				
+
 	echo "Creating new branch gh-pages"
 	create_readme
 	git add .
@@ -95,7 +94,7 @@ touch .nojekyll
 
 # Copy in the artifacts
 cd $BASE
-cp -r "$ARTIFACTS" "$PUBLISH/$pubdir"
+cp -r $* "$PUBLISH/$pubdir"
 cd $PUBLISH
 
 git add --all .
